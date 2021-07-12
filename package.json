@@ -1,0 +1,19 @@
+{
+	"name": "covid-data",
+	"version": "1.0.0",
+	"description": "Web application to show data about Covid-19 pandemic",
+	"main": "index.html",
+	"scripts": {
+		"start": "parcel index.html"
+	},
+	"author": "Cristian Esposito",
+	"license": "ISC",
+	"devDependencies": {
+		"parcel-bundler": "^1.12.5",
+		"sass": "^1.35.2"
+	},
+	"dependencies": {
+		"core-js": "^3.15.2",
+		"regenerator-runtime": "^0.13.7"
+	}
+}
