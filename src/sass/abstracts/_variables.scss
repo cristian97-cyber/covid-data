@@ -1,6 +1,11 @@
 :root {
-	--color-grey-dark-1: #171717;
-	--color-grey-dark-2: #444444;
-	--color-red: #da0037;
-	--color-grey-light: #ededed;
+	--color-red-light: #fe8d85;
+	--color-red: #fd5e53;
+	--color-red-dark: #fc1f10;
+	--gradient-red: linear-gradient(to bottom right, #fe8d85, #fc1f10);
+
+	--color-grey-light-1: #f9fcfb;
+
+	--color-green-light: #b0eacd;
+	--color-green-dark: #21bf73;
 }
