@@ -10,8 +10,16 @@
 			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
 			rel="stylesheet"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+			crossorigin=""
+		/>
 		<link rel="stylesheet" href="src/sass/main.scss" />
 		<link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon" />
+
+		<script defer src="src/js/controller.js"></script>
 
 		<title>Covid Data | View all data about Covid-19 pandemic</title>
 	</head>
@@ -153,7 +161,7 @@
 				</div>
 				-->
 			</div>
-			<div class="map"></div>
+			<div class="map" id="map"></div>
 		</main>
 	</body>
 </html>

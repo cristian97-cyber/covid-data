@@ -13,6 +13,8 @@
 		"sass": "^1.35.2"
 	},
 	"dependencies": {
+		"@amcharts/amcharts4": "^4.10.20",
+		"@amcharts/amcharts4-geodata": "^4.1.21",
 		"core-js": "^3.15.2",
 		"regenerator-runtime": "^0.13.7"
 	}
