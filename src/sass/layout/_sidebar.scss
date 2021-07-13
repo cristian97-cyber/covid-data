@@ -6,12 +6,23 @@
 	background-color: var(--color-grey-light-1);
 	border-top-left-radius: 0.3rem;
 	border-bottom-left-radius: 0.3rem;
-	padding: 3rem 2rem;
+	padding: 3rem 5rem;
+	box-shadow: 0 1.5rem 3rem rgba(#000, 0.3);
 
 	flex: 0 0 30vw;
 
 	&__logo {
 		height: 7rem;
 		width: auto;
+		margin-bottom: 2rem;
+	}
+
+	&__content {
+		align-self: stretch;
+		overflow-y: scroll;
+
+		&::-webkit-scrollbar {
+			width: 0;
+		}
 	}
 }
