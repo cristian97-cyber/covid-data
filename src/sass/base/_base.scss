@@ -9,10 +9,28 @@
 html {
 	font-size: 62.5%;
 	box-sizing: border-box;
+
+	@include bp-1400 {
+		font-size: 56.25%;
+	}
+
+	@include bp-768 {
+		font-size: 50%;
+	}
 }
 
 body {
 	height: 100vh;
+	min-height: 600px;
 	background: var(--gradient-red);
 	color: var(--color-grey-dark-1);
+
+	@include bp-1400 {
+		min-height: 500px;
+	}
+
+	@include bp-576 {
+		height: auto;
+		min-height: 100vh;
+	}
 }

@@ -6,4 +6,12 @@
 	cursor: pointer;
 
 	flex: 1;
+
+	@include bp-576 {
+		flex: 0 0 40vh;
+	}
+
+	& > div {
+		overflow: visible !important;
+	}
 }

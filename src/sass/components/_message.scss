@@ -4,9 +4,10 @@
 	justify-content: center;
 	align-items: center;
 
-	height: 100%;
 	color: var(--color-red);
 	font-weight: 600;
+	text-align: center;
+	margin: auto 0;
 
 	&__icon {
 		width: 3rem;

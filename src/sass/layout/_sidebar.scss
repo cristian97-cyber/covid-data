@@ -18,11 +18,27 @@
 	}
 
 	&__content {
-		align-self: stretch;
 		overflow-y: scroll;
+
+		align-self: stretch;
 
 		&::-webkit-scrollbar {
 			width: 0;
 		}
+	}
+
+	@include bp-992 {
+		flex: 0 0 40vw;
+	}
+
+	@include bp-768 {
+		flex: 0 0 50vw;
+	}
+
+	@include bp-576 {
+		flex: 1 0 auto;
+		order: 1;
+
+		min-height: 60vh;
 	}
 }

@@ -3,4 +3,12 @@
 
 	height: 100%;
 	padding: 4rem;
+
+	@include bp-768 {
+		padding: 0;
+	}
+
+	@include bp-576 {
+		flex-direction: column;
+	}
 }

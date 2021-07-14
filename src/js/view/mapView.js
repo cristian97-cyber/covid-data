@@ -34,6 +34,7 @@ class MapView extends View {
 		// Create map instance
 		const chart = am4core.create(this._parentElement, am4maps.MapChart);
 		chart.projection = new am4maps.projections.Miller();
+		chart.responsive.enabled = true;
 
 		// Create map polygon series for world map
 		const worldSeries = chart.series.push(new am4maps.MapPolygonSeries());
@@ -50,36 +51,6 @@ class MapView extends View {
 
 		let hs = worldPolygon.states.create("hover");
 		hs.properties.fill = chart.colors.getIndex(9);
-
-		// Create country specific series (but hide it for now)
-		const countrySeries = chart.series.push(new am4maps.MapPolygonSeries());
-		countrySeries.useGeodata = true;
-		countrySeries.hide();
-		countrySeries.geodataSource.events.on("done", function (ev) {
-			worldSeries.hide();
-			countrySeries.show();
-		});
-
-		const countryPolygon = countrySeries.mapPolygons.template;
-		countryPolygon.tooltipText = "{name}";
-		countryPolygon.nonScalingStroke = true;
-		countryPolygon.strokeOpacity = 0.5;
-		countryPolygon.fill = am4core.color("#eee");
-
-		hs = countryPolygon.states.create("hover");
-		hs.properties.fill = chart.colors.getIndex(9);
-
-		// Set up click events
-		worldPolygon.events.on("hit", function (ev) {
-			ev.target.series.chart.zoomToMapObject(ev.target);
-			const map = ev.target.dataItem.dataContext.map;
-			if (map) {
-				ev.target.isHover = false;
-				countrySeries.geodataSource.url =
-					"https://www.amcharts.com/lib/4/geodata/json/" + map + ".json";
-				countrySeries.geodataSource.load();
-			}
-		});
 
 		// Set up data for countries
 		const data = [];
@@ -103,7 +74,6 @@ class MapView extends View {
 		const homeButton = new am4core.Button();
 		homeButton.events.on("hit", function () {
 			worldSeries.show();
-			countrySeries.hide();
 			chart.goHome();
 		});
 

@@ -1,0 +1,23 @@
+@mixin bp-1400 {
+	@media only screen and (max-width: 87.5em) {
+		@content;
+	}
+}
+
+@mixin bp-992 {
+	@media only screen and (max-width: 62em) {
+		@content;
+	}
+}
+
+@mixin bp-768 {
+	@media only screen and (max-width: 48em) {
+		@content;
+	}
+}
+
+@mixin bp-576 {
+	@media only screen and (max-width: 36em) {
+		@content;
+	}
+}
