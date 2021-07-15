@@ -10,6 +10,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated.js";
 class MapView extends View {
 	_parentElement = document.querySelector(".map");
 	_map;
+	_worldPolygon;
 
 	constructor() {
 		super();
@@ -89,6 +90,14 @@ class MapView extends View {
 		homeButton.insertBefore(map.zoomControl.plusButton);
 
 		this._map = map;
+		this._worldPolygon = worldPolygon;
+	}
+
+	addHandlerMapClick(handler) {
+		this._worldPolygon.events.on("hit", function (e) {
+			const id = e.target.dataItem.dataContext.id;
+			handler(id);
+		});
 	}
 }
 

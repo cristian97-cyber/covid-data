@@ -4,6 +4,12 @@
 	}
 }
 
+@mixin bp-1200 {
+	@media only screen and (max-width: 75em) {
+		@content;
+	}
+}
+
 @mixin bp-992 {
 	@media only screen and (max-width: 62em) {
 		@content;
@@ -16,8 +22,8 @@
 	}
 }
 
-@mixin bp-576 {
-	@media only screen and (max-width: 36em) {
+@mixin bp-600 {
+	@media only screen and (max-width: 37.5em) {
 		@content;
 	}
 }

@@ -10,12 +10,8 @@ html {
 	font-size: 62.5%;
 	box-sizing: border-box;
 
-	@include bp-1400 {
+	@include bp-992 {
 		font-size: 56.25%;
-	}
-
-	@include bp-768 {
-		font-size: 50%;
 	}
 }
 
@@ -29,7 +25,7 @@ body {
 		min-height: 500px;
 	}
 
-	@include bp-576 {
+	@include bp-600 {
 		height: auto;
 		min-height: 100vh;
 	}

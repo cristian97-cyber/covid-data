@@ -8,7 +8,7 @@
 		padding: 0;
 	}
 
-	@include bp-576 {
+	@include bp-600 {
 		flex-direction: column;
 	}
 }

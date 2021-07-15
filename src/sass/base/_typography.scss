@@ -11,13 +11,13 @@ body {
 	background-clip: text;
 	color: transparent;
 	font-weight: 700;
-	text-transform: uppercase;
 }
 
 .heading--2 {
 	@extend %headings;
 
-	font-size: 2.5rem;
+	font-size: 2.25rem;
+	text-transform: uppercase;
 }
 
 .heading--3 {

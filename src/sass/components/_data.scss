@@ -16,33 +16,14 @@
 		padding: 0.5rem 0;
 	}
 
-	&__item-icon {
-		width: 2rem;
-		height: 2rem;
-		fill: var(--color-green-dark);
-		margin-right: 0.75rem;
-
-		&--up,
-		&--down {
-			width: 1.5rem;
-			height: 1.5rem;
-			margin-left: auto;
-		}
-
-		&--up {
-			fill: var(--color-red);
-		}
-	}
-
 	&__item-title {
 		color: var(--color-green-dark);
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 		font-weight: 700;
-		text-transform: uppercase;
 		margin-right: 0.5rem;
 	}
 
 	&__item-value {
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 	}
 }
