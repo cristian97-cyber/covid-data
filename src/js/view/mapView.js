@@ -8,7 +8,8 @@ import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated.js";
 
 class MapView extends View {
-	_parentElement = document.querySelector("#map");
+	_parentElement = document.querySelector(".map");
+	_map;
 
 	constructor() {
 		super();
@@ -32,12 +33,12 @@ class MapView extends View {
 		};
 
 		// Create map instance
-		const chart = am4core.create(this._parentElement, am4maps.MapChart);
-		chart.projection = new am4maps.projections.Miller();
-		chart.responsive.enabled = true;
+		const map = am4core.create(this._parentElement, am4maps.MapChart);
+		map.projection = new am4maps.projections.Miller();
+		map.responsive.enabled = true;
 
 		// Create map polygon series for world map
-		const worldSeries = chart.series.push(new am4maps.MapPolygonSeries());
+		const worldSeries = map.series.push(new am4maps.MapPolygonSeries());
 		worldSeries.useGeodata = true;
 		worldSeries.geodata = am4geodata_worldLow;
 		worldSeries.exclude = ["AQ"];
@@ -50,7 +51,7 @@ class MapView extends View {
 		worldPolygon.propertyFields.fill = "color";
 
 		let hs = worldPolygon.states.create("hover");
-		hs.properties.fill = chart.colors.getIndex(9);
+		hs.properties.fill = map.colors.getIndex(9);
 
 		// Set up data for countries
 		const data = [];
@@ -60,7 +61,7 @@ class MapView extends View {
 				if (country.maps.length) {
 					data.push({
 						id: id,
-						color: chart.colors.getIndex(continents[country.continent_code]),
+						color: map.colors.getIndex(continents[country.continent_code]),
 						map: country.maps[0],
 					});
 				}
@@ -69,12 +70,13 @@ class MapView extends View {
 		worldSeries.data = data;
 
 		// Zoom control
-		chart.zoomControl = new am4maps.ZoomControl();
+		map.zoomControl = new am4maps.ZoomControl();
 
+		// Home button
 		const homeButton = new am4core.Button();
 		homeButton.events.on("hit", function () {
 			worldSeries.show();
-			chart.goHome();
+			map.goHome();
 		});
 
 		homeButton.icon = new am4core.Sprite();
@@ -83,8 +85,10 @@ class MapView extends View {
 		homeButton.icon.path =
 			"M16,8 L14,8 L14,16 L10,16 L10,10 L6,10 L6,16 L2,16 L2,8 L0,8 L8,0 L16,8 Z M16,8";
 		homeButton.marginBottom = 10;
-		homeButton.parent = chart.zoomControl;
-		homeButton.insertBefore(chart.zoomControl.plusButton);
+		homeButton.parent = map.zoomControl;
+		homeButton.insertBefore(map.zoomControl.plusButton);
+
+		this._map = map;
 	}
 }
 
