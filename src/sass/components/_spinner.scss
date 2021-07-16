@@ -1,0 +1,10 @@
+.spinner {
+	margin: auto 0;
+
+	&__icon {
+		width: 4rem;
+		height: 4rem;
+		fill: var(--color-red);
+		animation: rightRotation 1.5s infinite linear;
+	}
+}

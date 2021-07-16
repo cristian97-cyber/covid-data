@@ -9,8 +9,9 @@ const state = {
 
 const getCountryData = async function (id) {
 	const casesData = await fetchData(`${COVID_API_URL}cases?ab=${id}`);
+	const vaccinesData = await fetchData(`${COVID_API_URL}vaccines?ab=${id}`);
 
-	console.log(casesData);
+	console.log(casesData, vaccinesData);
 };
 
 export { state, getCountryData };
