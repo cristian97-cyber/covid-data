@@ -5,10 +5,14 @@ import mapView from "./view/mapView.js";
 import regeneratorRuntime from "regenerator-runtime/runtime.js";
 
 const controlMapClick = async function (countryId) {
-	dataView.renderSpinner();
+	try {
+		dataView.renderSpinner();
 
-	await model.getCountryData(countryId);
-	dataView.render(model.state.data);
+		await model.getCountryData(countryId);
+		dataView.render(model.state.data);
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 const init = function () {

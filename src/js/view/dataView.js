@@ -35,17 +35,25 @@ class DataView extends View {
 				<ul class="data__list">
 					<li class="data__item">
 						<span class="data__item-title">Partial:</span>
-						<span class="data__item-value">${nf.format(this._data.partialVaccinated)}</span>
+                        <span class="data__item-value">${
+													this._data.partialVaccinated
+														? nf.format(this._data.partialVaccinated)
+														: "N/D"
+												}</span>
 					</li>
 					<li class="data__item">
 						<span class="data__item-title">Fully:</span>
-						<span class="data__item-value">${nf.format(this._data.vaccinated)}</span>
+						<span class="data__item-value">${
+							this._data.vaccinated ? nf.format(this._data.vaccinated) : "N/D"
+						}</span>
 					</li>
 					<li class="data__item">
 						<span class="data__item-title">Percentage:</span>
-						<span class="data__item-value">${nf.format(
+						<span class="data__item-value">${
 							this._data.vaccinatedPercentage
-						)}%</span>
+								? nf.format(this._data.vaccinatedPercentage) + "%"
+								: "N/D"
+						}</span>
 					</li>
 				</ul>
 			</div>

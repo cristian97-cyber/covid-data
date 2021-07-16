@@ -12,14 +12,13 @@ const fetchData = async function (url) {
 
 		const res = await Promise.race([resPro, timeout(10)]);
 		if (!res.ok)
-			throw new Error(
-				"There was an error while processing your request, please try again!"
-			);
+			throw new Error(`Error: server responded with a status of ${res.status}`);
 
 		const data = await res.json();
 		return data;
 	} catch (err) {
 		console.error(err);
+		throw err;
 	}
 };
 
