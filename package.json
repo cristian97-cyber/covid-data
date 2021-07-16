@@ -16,6 +16,7 @@
 		"@amcharts/amcharts4": "^4.10.20",
 		"@amcharts/amcharts4-geodata": "^4.1.21",
 		"core-js": "^3.15.2",
+		"img": "^3.0.3",
 		"regenerator-runtime": "^0.13.7"
 	}
 }
