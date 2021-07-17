@@ -1,10 +1,12 @@
-import { COVID_API_URL, GEO_API_URL } from "./config.js";
+import { COVID_API_URL, GEO_API_URL, MS_PER_HOUR } from "./config.js";
 import { fetchData } from "./helpers.js";
 
 import regeneratorRuntime, { async } from "regenerator-runtime/runtime.js";
+import { cache } from "@amcharts/amcharts4/core";
 
 const state = {
 	data: undefined,
+	cache: [],
 };
 
 const createDataObject = function (cases, vaccines) {
@@ -29,8 +31,35 @@ const createDataObject = function (cases, vaccines) {
 	state.data.infectionsPerKm = state.data.contagions / state.data.countryKmArea;
 };
 
+const storeCache = function () {
+	localStorage.setItem("dataCache", JSON.stringify(state.cache));
+};
+
+const loadCache = function () {
+	const cacheData = JSON.parse(localStorage.getItem("dataCache"));
+	if (cacheData) state.cache = cacheData;
+};
+
+const getCacheElement = function (id) {
+	return state.cache.find(el => el.country === id);
+};
+
 const getCountryData = async function (id) {
 	try {
+		const cacheEl = getCacheElement(id);
+
+		// Found updated item in the cache
+		if (cacheEl && Date.now() - cacheEl.time < MS_PER_HOUR) {
+			state.data = cacheEl.data;
+			return;
+		}
+
+		// Found not updated item in the cache
+		if (cacheEl && Date.now() - cacheEl.time >= MS_PER_HOUR) {
+			const cacheIndex = state.cache.indexOf(cacheEl);
+			state.cache.splice(cacheIndex);
+		}
+
 		const casesData = await fetchData(`${COVID_API_URL}cases?ab=${id}`);
 		const vaccinesData = await fetchData(`${COVID_API_URL}vaccines?ab=${id}`);
 
@@ -42,6 +71,8 @@ const getCountryData = async function (id) {
 		const allVaccines = vaccinesData.All;
 
 		createDataObject(allCases, allVaccines);
+		state.cache.push({ country: id, data: state.data, time: Date.now() });
+		storeCache();
 	} catch (err) {
 		throw err;
 	}
@@ -60,5 +91,10 @@ const getCountryCode = async function (lat, lng) {
 		throw err;
 	}
 };
+
+const init = function () {
+	loadCache();
+};
+init();
 
 export { state, getCountryCode, getCountryData };
