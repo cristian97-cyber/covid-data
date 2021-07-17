@@ -18,6 +18,7 @@ const fetchData = async function (url) {
 		return data;
 	} catch (err) {
 		console.error(err);
+
 		throw err;
 	}
 };
