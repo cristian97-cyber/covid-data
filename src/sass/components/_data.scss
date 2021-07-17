@@ -26,4 +26,11 @@
 	&__item-value {
 		font-size: 1.4rem;
 	}
+
+	&__item-increment {
+		color: var(--color-red);
+		font-size: 1.2rem;
+		font-weight: 700;
+		margin-left: auto;
+	}
 }

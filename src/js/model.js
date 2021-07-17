@@ -1,7 +1,7 @@
-import { COVID_API_URL } from "./config.js";
+import { COVID_API_URL, GEO_API_URL } from "./config.js";
 import { fetchData } from "./helpers.js";
 
-import regeneratorRuntime from "regenerator-runtime/runtime.js";
+import regeneratorRuntime, { async } from "regenerator-runtime/runtime.js";
 
 const state = {
 	data: undefined,
@@ -47,4 +47,18 @@ const getCountryData = async function (id) {
 	}
 };
 
-export { state, getCountryData };
+const getCountryCode = async function (lat, lng) {
+	try {
+		const countryData = await fetchData(
+			`${GEO_API_URL}?latitude=${lat}&longitude=${lng}`
+		);
+
+		return countryData.countryCode;
+	} catch (err) {
+		console.error(err);
+
+		throw err;
+	}
+};
+
+export { state, getCountryCode, getCountryData };
