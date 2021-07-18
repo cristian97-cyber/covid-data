@@ -11,8 +11,6 @@ const controlMapClick = async function (countryId) {
 		await model.getCountryData(countryId);
 		dataView.render(model.state.data);
 	} catch (err) {
-		console.error(err);
-
 		dataView.renderMessage(
 			"An error occurred while retrieving the data, please try again.",
 			true

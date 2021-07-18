@@ -87,8 +87,6 @@ const getCountryCode = async function (lat, lng) {
 		return countryData.countryCode;
 	} catch (err) {
 		console.error(err);
-
-		throw err;
 	}
 };
 
