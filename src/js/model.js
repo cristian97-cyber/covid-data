@@ -57,7 +57,7 @@ const getCountryData = async function (id) {
 		// Found not updated item in the cache
 		if (cacheEl && Date.now() - cacheEl.time >= MS_PER_HOUR) {
 			const cacheIndex = state.cache.indexOf(cacheEl);
-			state.cache.splice(cacheIndex);
+			state.cache.splice(cacheIndex, 1);
 		}
 
 		const casesData = await fetchData(`${COVID_API_URL}cases?ab=${id}`);
