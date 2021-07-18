@@ -4,7 +4,8 @@
 	"description": "Web application to show data about Covid-19 pandemic",
 	"main": "index.html",
 	"scripts": {
-		"start": "parcel index.html"
+		"start": "parcel index.html",
+		"build": "parcel build index.html --out-dir ./dist"
 	},
 	"author": "Cristian Esposito",
 	"license": "ISC",
